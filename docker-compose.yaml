@@ -4,6 +4,12 @@ volumes:
   postgres-m1-vol:
   keycloak-m1-vol:
 services:
+  elearning-m1:
+    image: elearning-m1:latest
+    container_name: elearning-m1
+    ports:
+      - "8888:8080"
+
   keycloak-m1:
     image: quay.io/keycloak/keycloak:26.6.4
     container_name: keycloak-m1
