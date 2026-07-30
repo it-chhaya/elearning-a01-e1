@@ -6,9 +6,17 @@ volumes:
 services:
   elearning-m1:
     image: elearning-m1:latest
+    build:
+      context: . # route to Dockerfile
     container_name: elearning-m1
     ports:
       - "8888:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=${POSTGRES_JDBC_URL}
+    networks:
+      - m1-net
+    depends_on:
+      - postgres-m1
 
   keycloak-m1:
     image: quay.io/keycloak/keycloak:26.6.4
